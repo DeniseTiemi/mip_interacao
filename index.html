@@ -395,7 +395,8 @@
             :root {
                 --u: min(calc(100vw / 1922), calc(100vh / 895));
                 --u: min(calc(100vw / 1922), calc(100dvh / 895));
-                --z: 1
+                --v: calc(var(--u) * 1.05);
+                --z: 1.05
             }
 
             body {
@@ -424,8 +425,8 @@
                 max-width: none;
                 margin: 0;
                 box-sizing: border-box;
-                min-height: calc(var(--u) * 895);
-                padding: calc(var(--u) * 72) 0 calc(var(--u) * 20) calc(var(--u) * 85);
+                min-height: calc(var(--u) * 895 - 1px);
+                padding: calc(var(--v) * 72) 0 calc(var(--v) * 20) calc(var(--v) * 85);
                 display: flex;
                 flex-direction: column
             }
@@ -439,20 +440,20 @@
             }
 
             h1 {
-                font-size: calc(var(--u) * 24);
-                line-height: calc(var(--u) * 30);
+                font-size: calc(var(--v) * 24);
+                line-height: calc(var(--v) * 30);
                 letter-spacing: -.01em;
-                margin: 0 0 calc(var(--u) * 8)
+                margin: 0 0 calc(var(--v) * 8)
             }
 
             .sub {
-                font-size: calc(var(--u) * 14);
-                line-height: calc(var(--u) * 21);
-                margin: 0 0 calc(var(--u) * 63)
+                font-size: calc(var(--v) * 14);
+                line-height: calc(var(--v) * 21);
+                margin: 0 0 calc(var(--v) * 63)
             }
 
             .grid {
-                grid-template-columns: calc(var(--u) * 260) calc(var(--u) * 557) calc(var(--u) * 392);
+                grid-template-columns: calc(var(--v) * 260) calc(var(--v) * 557) calc(var(--v) * 392);
                 justify-content: start;
                 column-gap: 0;
                 align-items: start
@@ -463,13 +464,13 @@
             }
 
             #wrap {
-                width: calc(var(--u) * 493);
+                width: calc(var(--v) * 493);
                 max-width: none;
-                margin: 0 0 0 calc(var(--u) * 64)
+                margin: 0 0 0 calc(var(--v) * 64)
             }
 
             #panel {
-                margin-left: calc(var(--u) * 102);
+                margin-left: calc(var(--v) * 102);
                 margin-top: 0
             }
 
@@ -478,70 +479,70 @@
             }
 
             #opts {
-                gap: calc(var(--u) * 10);
-                margin: 0 0 calc(var(--u) * 23)
+                gap: calc(var(--v) * 10);
+                margin: 0 0 calc(var(--v) * 23)
             }
 
             .opt {
-                gap: calc(var(--u) * 11);
-                padding: calc(var(--u) * 12) calc(var(--u) * 15);
-                border-radius: calc(var(--u) * 10)
+                gap: calc(var(--v) * 11);
+                padding: calc(var(--v) * 12) calc(var(--v) * 15);
+                border-radius: calc(var(--v) * 10)
             }
 
             .dot {
-                width: calc(var(--u) * 20);
-                height: calc(var(--u) * 20)
+                width: calc(var(--v) * 20);
+                height: calc(var(--v) * 20)
             }
 
             .dot::after {
-                width: calc(var(--u) * 8);
-                height: calc(var(--u) * 8)
+                width: calc(var(--v) * 8);
+                height: calc(var(--v) * 8)
             }
 
             .t {
-                font-size: calc(var(--u) * 14)
+                font-size: calc(var(--v) * 14)
             }
 
             .d {
-                font-size: calc(var(--u) * 11.5)
+                font-size: calc(var(--v) * 11.5)
             }
 
             .chips {
-                gap: calc(var(--u) * 3);
-                margin-top: calc(var(--u) * 6)
+                gap: calc(var(--v) * 3);
+                margin-top: calc(var(--v) * 6)
             }
 
             .chips i {
-                width: calc(var(--u) * 15);
-                height: calc(var(--u) * 4.5)
+                width: calc(var(--v) * 15);
+                height: calc(var(--v) * 4.5)
             }
 
             #leg {
                 display: grid;
                 grid-auto-flow: column;
                 grid-template-rows: repeat(2, auto);
-                grid-auto-columns: calc(var(--u) * 87);
+                grid-auto-columns: calc(var(--v) * 87);
                 justify-content: start;
-                gap: calc(var(--u) * 6) 0;
-                font-size: calc(var(--u) * 9.5);
-                padding-left: calc(var(--u) * 13)
+                gap: calc(var(--v) * 6) 0;
+                font-size: calc(var(--v) * 9.5);
+                padding-left: calc(var(--v) * 13)
             }
 
             #leg.gradleg {
                 display: block;
-                width: calc(var(--u) * 260);
+                width: calc(var(--v) * 260);
                 max-width: none;
                 padding-left: 0
             }
 
             .gbar {
-                height: calc(var(--u) * 5);
-                border-radius: calc(var(--u) * 3);
-                margin-bottom: calc(var(--u) * 7)
+                height: calc(var(--v) * 5);
+                border-radius: calc(var(--v) * 3);
+                margin-bottom: calc(var(--v) * 7)
             }
 
             .glab {
-                gap: calc(var(--u) * 8)
+                gap: calc(var(--v) * 8)
             }
 
             #leg .l2 {
@@ -550,22 +551,22 @@
             }
 
             #leg .l2 i {
-                margin-top: calc(var(--u) * 2)
+                margin-top: calc(var(--v) * 2)
             }
 
             #leg i {
-                width: calc(var(--u) * 8);
-                height: calc(var(--u) * 8)
+                width: calc(var(--v) * 8);
+                height: calc(var(--v) * 8)
             }
 
             .empty {
-                font-size: calc(var(--u) * 10);
-                padding: calc(var(--u) * 14) calc(var(--u) * 16)
+                font-size: calc(var(--v) * 10);
+                padding: calc(var(--v) * 14) calc(var(--v) * 16)
             }
 
             .note {
-                font-size: calc(var(--u) * 9.5);
-                margin: auto 0 0 calc(var(--u) * -37)
+                font-size: calc(var(--v) * 9.5);
+                margin: auto 0 0 calc(var(--v) * -37)
             }
         }
 
@@ -702,7 +703,7 @@
         }
         render(); setMode(mode);
     
-        (function () { function z() { var w = window.innerWidth; document.documentElement.style.setProperty('--z', w > 900 ? Math.min(w / 1922, window.innerHeight / 895).toFixed(4) : 1); } z(); window.addEventListener('resize', z); })();
+        (function () { function z() { var w = window.innerWidth; document.documentElement.style.setProperty('--z', w > 900 ? (Math.min(w / 1922, window.innerHeight / 895) * 1.05).toFixed(4) : 1); } z(); window.addEventListener('resize', z); })();
     </script>
 </body>
 
