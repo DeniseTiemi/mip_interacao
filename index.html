@@ -43,6 +43,7 @@
             --accbd: #378ADD;
             --dng: #c0392b;
             color-scheme: light;
+            --p: 1px;
             box-sizing: border-box;
             padding-top: env(safe-area-inset-top, 0px);
             padding-bottom: env(safe-area-inset-bottom, 0px)
@@ -299,11 +300,11 @@
             pointer-events: none;
             background: #1f2937;
             color: #fff;
-            border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 12px;
+            border-radius: calc(var(--p) * 8);
+            padding: calc(var(--p) * 8) calc(var(--p) * 12);
+            font-size: calc(var(--p) * 12);
             line-height: 1.5;
-            width: 176px;
+            width: calc(var(--p) * 176);
             z-index: 2
         }
 
@@ -396,6 +397,7 @@
                 --u: min(calc(100vw / 1922), calc(100vh / 895));
                 --u: min(calc(100vw / 1922), calc(100dvh / 895));
                 --v: calc(var(--u) * 1.05);
+                --p: var(--v);
                 --z: 1.05
             }
 
@@ -524,7 +526,7 @@
                 grid-auto-columns: calc(var(--v) * 87);
                 justify-content: start;
                 gap: calc(var(--v) * 6) 0;
-                font-size: calc(var(--v) * 9.5);
+                font-size: calc(var(--v) * 12.925);
                 padding-left: calc(var(--v) * 13)
             }
 
@@ -560,12 +562,12 @@
             }
 
             .empty {
-                font-size: calc(var(--v) * 10);
+                font-size: calc(var(--v) * 12);
                 padding: calc(var(--v) * 14) calc(var(--v) * 16)
             }
 
             .note {
-                font-size: calc(var(--v) * 9.5);
+                font-size: calc(var(--v) * 11.45);
                 margin: auto 0 0 calc(var(--v) * -37)
             }
         }
@@ -624,7 +626,7 @@
             segs(d).forEach(function (z, k) { h += '<line id="s' + d.i + '_' + k + '" x1="' + fx(z[0]) + '" x2="' + fx(z[1]) + '" y1="' + y + '" y2="' + y + '" stroke-width="1.2"/>'; });
         });
         h += '<g id="hl"></g>'; svg.innerHTML = h;
-        function sw2(c, t) { return '<span><i style="width:18px;height:3px;border-radius:2px;background:' + c + '"></i>' + t + '</span>'; }
+        function sw2(c, t) { return '<span><i style="width:calc(var(--p)*18);height:calc(var(--p)*3);border-radius:calc(var(--p)*2);background:' + c + '"></i>' + t + '</span>'; }
         function sw(c, t) { return '<span><i style="background:' + c + '"></i>' + t + '</span>'; }
         var MODES = [
             { id: 'fornecedores', t: 'Estimativa de emissão', d: 'Cálculo realizado a partir da escolha de\u00a0fornecedores', ch: [G, B, R], lg: '<div class="gl"><div class="gbar" style="background:linear-gradient(90deg,' + G + ',' + B + ',' + R + ')"></div><div class="glab"><span>Melhor<br>fornecedor</span><span>Valor de<br>referência</span><span>Pior<br>fornecedor</span></div></div>', grad: true },
@@ -632,7 +634,7 @@
             { id: 'classes', t: 'Classes', d: 'Classificação dos projetos de A a D a partir da quantidade de carbono\u00a0emitido', ch: [CL.A, CL.B, CL.C, CL.D], lg: ['A', 'B', 'C', 'D'].map(function (k) { return sw(CL[k], 'Classe ' + k); }).join('') },
             { id: 'potencial', t: 'Potencial de mitigação', d: 'Distância da estimativa atual até a referência de melhores\u00a0projetos', ch: [PU, G], lg: '<span class="l2"><i style="background:' + PU + '"></i>Distância até a referência dos 5%\u00a0melhores</span>' + sw(G, '5% melhores') }];
         var op = document.getElementById('opts'), oh = '';
-        MODES.forEach(function (m, j) { oh += '<label class="opt" id="o' + j + '"><input type="radio" name="vis" value="' + j + '"' + (j === mode ? ' checked' : '') + '><span class="dot"></span><span><span class="t">' + m.t + '</span><span class="d">' + m.d + '</span><span class="chips">' + (m.id === 'fornecedores' ? '<i style="width:50px;background:linear-gradient(90deg,' + G + ',' + B + ',' + R + ')"></i>' : m.ch.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('')) + '</span></span></label>'; });
+        MODES.forEach(function (m, j) { oh += '<label class="opt" id="o' + j + '"><input type="radio" name="vis" value="' + j + '"' + (j === mode ? ' checked' : '') + '><span class="dot"></span><span><span class="t">' + m.t + '</span><span class="d">' + m.d + '</span><span class="chips">' + (m.id === 'fornecedores' ? '<i style="width:calc(var(--p)*50);background:linear-gradient(90deg,' + G + ',' + B + ',' + R + ')"></i>' : m.ch.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('')) + '</span></span></label>'; });
         op.innerHTML = oh;
         function setMode(j) {
             mode = j; var m = MODES[j].id;
@@ -668,9 +670,9 @@
             var i = idxAt(e); if (i !== hov) { hov = i; paint(); }
             if (i < 0) { tip.style.display = 'none'; svg.style.cursor = 'default'; return; }
             var d = data[i]; svg.style.cursor = 'pointer';
-            tip.innerHTML = '<div style="font-weight:700;font-size:13px">' + d.n + '</div><div style="display:flex;align-items:center;gap:6px"><span style="background:' + CL[d.k] + ';color:#0b0b0b;border-radius:4px;padding:0 6px;font-weight:700">' + d.k + '</span><span>' + f1(d.mn) + ' – ' + f1(d.mx) + ' kg CO₂/m²</span></div><div style="color:#9ca3af;margin-top:2px">Clique para ver detalhes</div>';
-            var wr = wrap.getBoundingClientRect(), lx = e.clientX - wr.left + 14; if (lx + 178 > wr.width) lx = e.clientX - wr.left - 192;
-            tip.style.left = lx + 'px'; tip.style.top = (e.clientY - wr.top - 12) + 'px'; tip.style.display = 'block';
+            tip.innerHTML = '<div style="font-weight:700;font-size:calc(var(--p)*13)">' + d.n + '</div><div style="display:flex;align-items:center;gap:calc(var(--p)*6)"><span style="background:' + CL[d.k] + ';color:#0b0b0b;border-radius:calc(var(--p)*4);padding:0 calc(var(--p)*6);font-weight:700">' + d.k + '</span><span>' + f1(d.mn) + ' – ' + f1(d.mx) + ' kg CO₂/m²</span></div><div style="color:#9ca3af;margin-top:calc(var(--p)*2)">Clique para ver detalhes</div>';
+            var wr = wrap.getBoundingClientRect(), k = parseFloat(document.documentElement.style.getPropertyValue('--z')) || 1, lx = e.clientX - wr.left + 14 * k; if (lx + 178 * k > wr.width) lx = e.clientX - wr.left - 192 * k;
+            tip.style.left = lx + 'px'; tip.style.top = (e.clientY - wr.top - 12 * k) + 'px'; tip.style.display = 'block';
         });
         svg.addEventListener('mouseleave', function () { hov = -1; tip.style.display = 'none'; paint(); });
         svg.addEventListener('click', function (e) { sel = idxAt(e); render(); paint(); });
