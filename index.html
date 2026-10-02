@@ -82,13 +82,13 @@
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 24.2px;
             font-weight:700;
             margin: 0 0 4px
         }
 
         .sub {
-            font-size: 14px;
+            font-size: 15.4px;
             color: var(--fg2);
             margin: 0 0 16px
         }
@@ -163,13 +163,13 @@
         }
 
         .t {
-            font-size: 14px;
+            font-size: 15.4px;
             font-weight:700;
             display: block
         }
 
         .d {
-            font-size: 12px;
+            font-size: 13.2px;
             color: var(--fg2);
             display: block
         }
@@ -192,7 +192,7 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 8px;
-            font-size: 12px;
+            font-size: 13.2px;
             color: var(--fg2);
             min-height: 20px;
             margin: 0 0 4px
@@ -302,7 +302,7 @@
             color: #fff;
             border-radius: calc(var(--p) * 8);
             padding: calc(var(--p) * 8) calc(var(--p) * 12);
-            font-size: calc(var(--p) * 12);
+            font-size: calc(var(--p) * 13.2);
             line-height: 1.5;
             width: calc(var(--p) * 176);
             z-index: 2
@@ -312,7 +312,7 @@
             border: 1px dashed var(--bds);
             border-radius: 12px;
             padding: 20px 16px;
-            font-size: 13px;
+            font-size: 14.3px;
             color: var(--fg2);
             text-align: center
         }
@@ -332,12 +332,12 @@
             cursor: pointer;
             height: 24px;
             padding: 0 8px;
-            font-size: 14px
+            font-size: 15.4px
         }
 
         table {
             width: 100%;
-            font-size: 12px;
+            font-size: 13.2px;
             margin: 8px 0;
             border-collapse: collapse
         }
@@ -368,20 +368,20 @@
 
         .bx b {
             display: block;
-            font-size: 12px;
+            font-size: 13.2px;
             font-weight: 700;
             line-height: 1.2
         }
 
         .bx small {
             display: block;
-            font-size: 11px;
+            font-size: 12.1px;
             line-height: 1.1;
             color: var(--fg3)
         }
 
         .note {
-            font-size: 12px;
+            font-size: 13.2px;
             color: var(--fg3);
             margin-top: 12px
         }
@@ -442,14 +442,14 @@
             }
 
             h1 {
-                font-size: calc(var(--v) * 24);
+                font-size: calc(var(--v) * 26.4);
                 line-height: calc(var(--v) * 30);
                 letter-spacing: -.01em;
                 margin: 0 0 calc(var(--v) * 8)
             }
 
             .sub {
-                font-size: calc(var(--v) * 14);
+                font-size: calc(var(--v) * 15.4);
                 line-height: calc(var(--v) * 21);
                 margin: 0 0 calc(var(--v) * 63)
             }
@@ -502,11 +502,11 @@
             }
 
             .t {
-                font-size: calc(var(--v) * 14)
+                font-size: calc(var(--v) * 15.4)
             }
 
             .d {
-                font-size: calc(var(--v) * 11.5)
+                font-size: calc(var(--v) * 12.65)
             }
 
             .chips {
@@ -523,10 +523,10 @@
                 display: grid;
                 grid-auto-flow: column;
                 grid-template-rows: repeat(2, auto);
-                grid-auto-columns: calc(var(--v) * 87);
+                grid-auto-columns: calc(var(--v) * 108);
                 justify-content: start;
                 gap: calc(var(--v) * 6) 0;
-                font-size: calc(var(--v) * 12.925);
+                font-size: calc(var(--v) * 14.218);
                 padding-left: calc(var(--v) * 13)
             }
 
@@ -547,7 +547,12 @@
                 gap: calc(var(--v) * 8)
             }
 
+            #leg span {
+                white-space: nowrap
+            }
+
             #leg .l2 {
+                white-space: normal;
                 grid-column: span 2;
                 align-items: flex-start
             }
@@ -561,13 +566,15 @@
                 height: calc(var(--v) * 8)
             }
 
+            /* #panel > * já recebe zoom proporcional (--z); valores em px fixos evitam escala dupla.
+               12.6px / 14.7px / 16.8px = tamanho em 1922x895 (12 / 14 / 16 x 1,05). */
             .empty {
-                font-size: calc(var(--v) * 12);
-                padding: calc(var(--v) * 14) calc(var(--v) * 16)
+                font-size: 13.86px;
+                padding: 14.7px 16.8px
             }
 
             .note {
-                font-size: calc(var(--v) * 11.45);
+                font-size: calc(var(--v) * 12.595);
                 margin: auto 0 0 calc(var(--v) * -37)
             }
         }
@@ -616,9 +623,9 @@
         function segs(d) { var s = (d.mx - d.mn) / 3; return [[d.mn, d.mn + s], [d.mn + s, d.mn + 2 * s], [d.mn + 2 * s, d.mx]]; }
         function ln(x1, x2, y, c, w, o) { return '<line x1="' + fx(x1) + '" x2="' + fx(x2) + '" y1="' + y + '" y2="' + y + '" stroke="' + c + '" stroke-width="' + w + '" opacity="' + o + '"/>'; }
         var svg = document.getElementById('svg'), h = '';
-        for (var g = 0; g <= 10; g++) { var v = g / 10; h += '<line x1="' + L + '" x2="' + (L + PW) + '" y1="' + fy(v) + '" y2="' + fy(v) + '" style="stroke:var(--bd)"/><text x="' + (L - 6) + '" y="' + (fy(v) + 4) + '" text-anchor="end" font-size="11" style="fill:var(--fg3)">' + (g === 0 ? '0' : (g === 10 ? '1,0' : '0,' + g)) + '</text>'; }
-        [0, 50, 100, 150, 200].forEach(function (v) { h += '<line x1="' + fx(v) + '" x2="' + fx(v) + '" y1="' + T + '" y2="' + (T + PH) + '" style="stroke:var(--bd)"/><text x="' + fx(v) + '" y="' + (T + PH + 16) + '" text-anchor="middle" font-size="11" style="fill:var(--fg3)">' + v + '</text>'; });
-        h += '<text x="' + (L + PW / 2) + '" y="486" text-anchor="middle" font-size="11" style="fill:var(--fg2)">Carbono embutido (kg CO₂/m²)</text><text transform="rotate(-90)" x="' + (-(T + PH / 2)) + '" y="10" text-anchor="middle" font-size="11" style="fill:var(--fg2)">Potencial de mitigação</text>';
+        for (var g = 0; g <= 10; g++) { var v = g / 10; h += '<line x1="' + L + '" x2="' + (L + PW) + '" y1="' + fy(v) + '" y2="' + fy(v) + '" style="stroke:var(--bd)"/><text x="' + (L - 6) + '" y="' + (fy(v) + 4) + '" text-anchor="end" font-size="12.1" style="fill:var(--fg3)">' + (g === 0 ? '0' : (g === 10 ? '1,0' : '0,' + g)) + '</text>'; }
+        [0, 50, 100, 150, 200].forEach(function (v) { h += '<line x1="' + fx(v) + '" x2="' + fx(v) + '" y1="' + T + '" y2="' + (T + PH) + '" style="stroke:var(--bd)"/><text x="' + fx(v) + '" y="' + (T + PH + 16) + '" text-anchor="middle" font-size="12.1" style="fill:var(--fg3)">' + v + '</text>'; });
+        h += '<text x="' + (L + PW / 2) + '" y="486" text-anchor="middle" font-size="12.1" style="fill:var(--fg2)">Carbono embutido (kg CO₂/m²)</text><text transform="rotate(-90)" x="' + (-(T + PH / 2)) + '" y="10" text-anchor="middle" font-size="12.1" style="fill:var(--fg2)">Potencial de mitigação</text>';
         data.forEach(function (d) {
             var y = fy(d.p);
             h += '<linearGradient id="g' + d.i + '" gradientUnits="userSpaceOnUse" x1="' + fx(d.mn) + '" x2="' + fx(d.mx) + '" y1="0" y2="0"><stop offset="0" stop-color="' + G + '"/><stop offset=".5" stop-color="' + B + '"/><stop offset="1" stop-color="' + R + '"/></linearGradient>';
@@ -670,7 +677,7 @@
             var i = idxAt(e); if (i !== hov) { hov = i; paint(); }
             if (i < 0) { tip.style.display = 'none'; svg.style.cursor = 'default'; return; }
             var d = data[i]; svg.style.cursor = 'pointer';
-            tip.innerHTML = '<div style="font-weight:700;font-size:calc(var(--p)*13)">' + d.n + '</div><div style="display:flex;align-items:center;gap:calc(var(--p)*6)"><span style="background:' + CL[d.k] + ';color:#0b0b0b;border-radius:calc(var(--p)*4);padding:0 calc(var(--p)*6);font-weight:700">' + d.k + '</span><span>' + f1(d.mn) + ' – ' + f1(d.mx) + ' kg CO₂/m²</span></div><div style="color:#9ca3af;margin-top:calc(var(--p)*2)">Clique para ver detalhes</div>';
+            tip.innerHTML = '<div style="font-weight:700;font-size:calc(var(--p)*14.3)">' + d.n + '</div><div style="display:flex;align-items:center;gap:calc(var(--p)*6)"><span style="background:' + CL[d.k] + ';color:#0b0b0b;border-radius:calc(var(--p)*4);padding:0 calc(var(--p)*6);font-weight:700">' + d.k + '</span><span>' + f1(d.mn) + ' – ' + f1(d.mx) + ' kg CO₂/m²</span></div><div style="color:#9ca3af;margin-top:calc(var(--p)*2)">Clique para ver detalhes</div>';
             var wr = wrap.getBoundingClientRect(), k = parseFloat(document.documentElement.style.getPropertyValue('--z')) || 1, lx = e.clientX - wr.left + 14 * k; if (lx + 178 * k > wr.width) lx = e.clientX - wr.left - 192 * k;
             tip.style.left = lx + 'px'; tip.style.top = (e.clientY - wr.top - 12 * k) + 'px'; tip.style.display = 'block';
         });
@@ -683,14 +690,14 @@
         function marks(d) {
             var y = fy(d.p), q = pts(d), r = '';
             ['R', 'V', 'C', 'P'].forEach(function (k) {
-                r += '<circle cx="' + fx(q[k]) + '" cy="' + y + '" r="6.5" fill="' + PC[k] + '" stroke="#fff" stroke-width="1.5" pointer-events="none"/><text x="' + fx(q[k]) + '" y="' + (y + 3) + '" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" pointer-events="none">' + k + '</text>';
+                r += '<circle cx="' + fx(q[k]) + '" cy="' + y + '" r="6.5" fill="' + PC[k] + '" stroke="#fff" stroke-width="1.5" pointer-events="none"/><text x="' + fx(q[k]) + '" y="' + (y + 3) + '" text-anchor="middle" font-size="8.8" font-weight="700" fill="#fff" pointer-events="none">' + k + '</text>';
             });
             return r;
         }
         var LEG = [['P', 'Potencial de mitigação', 'distância entre C e a referência dos 5% melhores projetos.', ':'], ['C', 'Melhor cenário', 'emissão do projeto calculado com o fornecedor de menor emissão de carbono.', ':'], ['V', 'Valor de referência', 'ponto médio entre C e R.', ':'], ['R', 'Pior cenário', 'emissão do projeto calculado com o fornecedor de maior emissão de carbono.', ':']];
         function legend() {
-            return '<div id="plg" style="margin-top:23px;padding:0 2px;font-size:11.5px;line-height:1.4;color:var(--fg2)">' + LEG.map(function (e) {
-                return '<div style="display:flex;gap:8px;align-items:flex-start;margin-top:6px"><span style="flex:none;width:16px;height:16px;border-radius:50%;background:' + PC[e[0]] + ';color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center">' + e[0] + '</span><span><b style="color:var(--fg)">' + e[1] + (e[3] || '.') + '</b> ' + e[2] + '</span></div>';
+            return '<div id="plg" style="margin-top:23px;padding:0 2px;font-size:12.65px;line-height:1.4;color:var(--fg2)">' + LEG.map(function (e) {
+                return '<div style="display:flex;gap:8px;align-items:flex-start;margin-top:6px"><span style="flex:none;width:16px;height:16px;border-radius:50%;background:' + PC[e[0]] + ';color:#fff;font-size:9.9px;font-weight:700;display:flex;align-items:center;justify-content:center">' + e[0] + '</span><span style="text-wrap:pretty"><b style="color:var(--fg)">' + e[1] + (e[3] || '.') + '</b> ' + e[2].replace(/ ([^ ]+)$/, '\u00a0$1') + '</span></div>';
             }).join('') + '</div>';
         }
         function bx(l, v, c) { return '<div class="bx" style="border-color:' + c + '"><b style="color:' + c + '">' + l + ' ' + f1(v) + '</b><small>kg/m²</small></div>'; }
@@ -698,7 +705,7 @@
             var el = document.getElementById('panel');
             if (sel < 0) { el.innerHTML = '<div class="empty">Clique em uma linha para ver os detalhes do empreendimento.</div>'; return; }
             var d = data[sel], q = pts(d), r = function (a, b) { return '<tr><td>' + a + '</td><td>' + b + '</td></tr>' };
-            el.innerHTML = '<div class="card" style="border:2px solid ' + CL[d.k] + '"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px"><div><div style="font-weight:700;font-size:15px">' + d.n + '</div><div style="font-size:12px;color:var(--dng)">Construtora FAUUSP</div></div><div style="display:contents"><span style="font-size:28px;font-weight:700;line-height:1;color:' + CL[d.k] + '">' + d.k + '</span><button class="x" id="cx" aria-label="Fechar">×</button></div></div>'
+            el.innerHTML = '<div class="card" style="border:2px solid ' + CL[d.k] + '"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px"><div><div style="font-weight:700;font-size:16.5px">' + d.n + '</div><div style="font-size:13.2px;color:var(--dng)">Construtora FAUUSP</div></div><div style="display:contents"><span style="font-size:30.8px;font-weight:700;line-height:1;color:' + CL[d.k] + '">' + d.k + '</span><button class="x" id="cx" aria-label="Fechar">×</button></div></div>'
                 + '<table>' + r('Tipologia', d.ti) + r('Porte', d.po) + r('Área const. total (m²)', d.ar.toLocaleString('pt-BR')) + r('Cidade/Estado', d.ci) + r('Sistema construtivo', d.si) + r('Potencial de mitigação', d.p.toFixed(2).replace('.', ',')) + '</table>'
                 + '<div style="display:flex;gap:6px;margin-bottom:6px">' + bx('P', q.P, PC.P) + bx('C', q.C, PC.C) + '</div><div style="display:flex;gap:6px">' + bx('V', q.V, PC.V) + bx('R', q.R, PC.R) + '</div></div>' + legend();
             document.getElementById('cx').onclick = function () { sel = -1; render(); paint(); };
